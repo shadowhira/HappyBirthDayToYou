@@ -129,6 +129,9 @@ const Rocket = () => {
     <div>
       {!showCurtainTransition ? (
         <>
+          <p className="instructions">
+            Pop all the balloons using Rocket and get the Gift!{" "}
+          </p>
           <animated.div
             ref={rocketRef}
             className="rocket"
@@ -154,6 +157,7 @@ const Rocket = () => {
           </p>
           {isOutOfBounds && (
             <button
+              className="reset-button"
               onClick={resetRocketPosition}
               style={{ position: "absolute", top: "10px", right: "10px" }}
             >

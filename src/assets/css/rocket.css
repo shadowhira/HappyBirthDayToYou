@@ -33,9 +33,73 @@
 
 .blink-and-zoom {
   animation: blink 1s infinite, zoom 1s infinite;
-  color: red;
+  color: rgb(186, 43, 43);
   font-size: 2em;
   font-weight: bold;
   text-align: center;
   position: relative;
+}
+
+.reset-button {
+  display: block; /* Make the button a block element */
+  margin: 0 auto; /* Center the button horizontally */
+  right: 10px;
+  background-color: white;
+  border: 2px solid #000; /* Đường viền màu đen */
+  border-radius: 5px; /* Các góc bo tròn */
+  padding: 10px 20px; /* Khoảng cách bên trong nút */
+  cursor: pointer; /* Con trỏ chuột khi hover vào nút */
+  font-size: 16px; /* Kích thước chữ */
+  font-weight: bold; /* Đậm chữ */
+  color: #000; /* Màu chữ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */margin: 0 auto;
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+}
+
+.reset-button:hover {
+  background-color: #f0f0f0; /* Nền xám nhạt khi hover */
+}
+
+/* styles.css */
+@keyframes slideDownFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.instructions {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(135, 24, 24);
+  background-color: #f0f8ff;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  animation: slideDownFadeIn 1s ease-in-out;
+}
+
+p {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(135, 24, 24);
+  padding: 20px;
+  margin: 20px;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  animation: slideDownFadeIn 1s ease-in-out;
 }

@@ -1,9 +1,12 @@
 {
+  "homepage": "https://shadowhira.github.io/HappyBirthDayToYou",
   "name": "hpbd",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -17,6 +20,7 @@
     "@react-spring/web": "^9.7.4",
     "axios": "^1.7.3",
     "detect-collisions": "^9.11.2",
+    "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^6.26.0",
