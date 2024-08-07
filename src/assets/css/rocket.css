@@ -1,0 +1,41 @@
+.rocket {
+  background: url(../images/rocket.jpg) no-repeat;
+  background-size: contain;
+  width: 140px;
+  height: 140px;
+  cursor: -webkit-grab;
+  will-change: transform;
+  user-select: none;
+}
+
+.rocket:active {
+  cursor: -webkit-grabbing;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
+.blink-and-zoom {
+  animation: blink 1s infinite, zoom 1s infinite;
+  color: red;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}

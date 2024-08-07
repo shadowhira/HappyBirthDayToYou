@@ -1,0 +1,24 @@
+.balloonImage {
+    width: 50px;
+    height: 50px;
+  }  
+
+.balloon {
+  position: absolute;
+  transition: transform 0.3s ease-out;
+}
+
+.popped {
+  animation: pop 1.5s forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

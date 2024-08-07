@@ -1,0 +1,37 @@
+/* chest.css */
+.screen-slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.chest-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chest {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.8s;
+}
+
+/* overlay to make the background dark */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
