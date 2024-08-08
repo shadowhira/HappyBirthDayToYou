@@ -8,6 +8,7 @@ import "../assets/css/rocket.css";
 import detectCollision from "../utils/detectCollision";
 import randomPosition from "../utils/randomPosition";
 import Chest from "./chest.jsx";
+import balloonPopSound from "../assets/sounds/balloon-pop.mp3";
 
 const Rocket = () => {
   const numBalloons = 21;
@@ -49,6 +50,11 @@ const Rocket = () => {
   const [showCurtainTransition, setShowCurtainTransition] = useState(false);
   const [showEffect, setShowEffect] = useState(false);
 
+  const playBalloonPopSound = () => {
+    const audio = new Audio(balloonPopSound);
+    audio.play();
+  };
+
   const handleCollision = (id) => {
     if (poppedBalloons.current.has(id)) return;
 
@@ -66,6 +72,9 @@ const Rocket = () => {
       }
       return newCount;
     });
+
+    // Chơi âm thanh khi bóng vỡ
+    playBalloonPopSound();
 
     setTimeout(() => {
       setBalloons((prevBalloons) =>
@@ -133,7 +142,7 @@ const Rocket = () => {
       {!showCurtainTransition ? (
         <>
           <p className="instructions">
-            Pop all balloons using Rocket and get the Gift!{" "}
+            Pop all 🎈 using 🚀 and get the Gift !
           </p>
           <animated.div
             ref={rocketRef}
