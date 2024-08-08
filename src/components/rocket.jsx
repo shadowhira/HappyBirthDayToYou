@@ -10,7 +10,7 @@ import randomPosition from "../utils/randomPosition";
 import Chest from "./chest.jsx";
 
 const Rocket = () => {
-  const numBalloons = 5;
+  const numBalloons = 21;
   const initialRocketPos = [0, 0];
   const [{ pos }, api] = useSpring(() => ({ pos: initialRocketPos }));
   const [{ angle }, angleApi] = useSpring(() => ({
@@ -19,17 +19,20 @@ const Rocket = () => {
   }));
 
   const bind = useDrag(
-    ({ xy, previous, down, movement: pos, velocity, direction }) => {
-      api.start({
-        pos,
-        immediate: down,
-        config: { velocity: scale(direction, velocity), decay: true },
-      });
-
-      if (dist(xy, previous) > 10 || !down)
+    ({ xy, previous, down, movement: pos, velocity, direction, memo = pos }) => {
+      if (dist(xy, previous) > 10 || !down) {
         angleApi.start({ angle: Math.atan2(direction[0], -direction[1]) });
+      }
+      api.start({ pos, immediate: down });
+      return memo;
     },
-    { initial: () => pos.get() }
+    {
+      initial: () => pos.get(),
+      threshold: 10,
+      pointer: { touch: true }, // Explicitly specify touch support
+      filterTaps: true,
+      // Removed bounds property to allow full screen drag
+    }
   );
 
   const rocketRef = useRef(null);
@@ -128,47 +131,49 @@ const Rocket = () => {
   return (
     <div>
       {!showCurtainTransition ? (
-      <>
-        <p className="instructions">
-          Pop all balloons using Rocket and get the Gift!{" "}
-        </p>
-        <animated.div
-          ref={rocketRef}
-          className="rocket"
-          {...bind()}
-          style={{
-            transform: to(
-              [pos, angle],
-              ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`
-            ),
-          }}
-        />
-        {balloons.map((balloon) => (
-          <Balloon
-            key={balloon.id}
-            x={balloon.x}
-            y={balloon.y}
-            id={`balloon-${balloon.id}`}
-            popped={balloon.popped}
-          />
-        ))}
-        {count === numBalloons && (
-          <p className={showEffect ? "blink-and-zoom" : ""}>
-            Happy your {numBalloons} birthday! <br></br> 🎉🎉🎉
+        <>
+          <p className="instructions">
+            Pop all balloons using Rocket and get the Gift!{" "}
           </p>
-        )}
-        <p>{count !== numBalloons && `${count}/${numBalloons}`}</p>
-        {isOutOfBounds && (
-          <button
-            className="reset-button"
-            onClick={resetRocketPosition}
-            style={{ position: "absolute", top: "10px", right: "10px" }}
-          >
-            Call Rocket back
-          </button>
-        )}
-      </>
-      ) : ( 
+          <animated.div
+            ref={rocketRef}
+            className="rocket"
+            {...bind()}
+            style={{
+              transform: to(
+                [pos, angle],
+                ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`
+              ),
+              willChange: 'transform',
+              touchAction: 'none'
+            }}
+          />
+          {balloons.map((balloon) => (
+            <Balloon
+              key={balloon.id}
+              x={balloon.x}
+              y={balloon.y}
+              id={`balloon-${balloon.id}`}
+              popped={balloon.popped}
+            />
+          ))}
+          {count === numBalloons && (
+            <p className={showEffect ? "blink-and-zoom" : ""}>
+              Happy your {numBalloons} birthday! <br></br> 🎉🎉🎉
+            </p>
+          )}
+          <p>{count !== numBalloons && `${count}/${numBalloons}`}</p>
+          {isOutOfBounds && (
+            <button
+              className="reset-button"
+              onClick={resetRocketPosition}
+              style={{ position: "absolute", top: "10px", right: "10px" }}
+            >
+              Call Rocket back
+            </button>
+          )}
+        </>
+      ) : (
         <CurtainTransition>
           <Chest />
         </CurtainTransition>

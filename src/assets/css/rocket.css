@@ -15,7 +15,7 @@
 .blink-and-zoom {
   
   animation: blink 1s infinite, zoom 1s infinite;
-  color: rgb(186, 43, 43);
+  color: rgba(142, 47, 47, 0.775);
   font-size: 22px;
   font-weight: bold;
   text-align: center;

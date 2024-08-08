@@ -3,10 +3,14 @@ import { useState } from "react";
 import "../assets/css/chest.css";
 import chest from "../assets/images/chest.png";
 import FlipCard from "./flipCard";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 const Chest = () => {
   const [chestClicked, setChestClicked] = useState(false);
   const [showCard, setShowCard] = useState(false);
+  
+  const { width, height } = useWindowSize();
 
   const screenSlide = useSpring({
     from: { transform: "translateX(-100%)" },
@@ -55,9 +59,18 @@ const Chest = () => {
         </animated.div>
       </animated.div>
       {showCard && (
-        <div className="overlay">
-          <FlipCard />
-        </div>
+        <>
+          <div className="overlay">
+            <FlipCard />
+          </div>
+          <Confetti
+            // className="overlay"
+            width={width}
+            height={height}
+            numberOfPieces={500}
+            recycle={true}  // This line ensures confetti is continuously recycled
+          />
+        </>
       )}
     </>
   );
