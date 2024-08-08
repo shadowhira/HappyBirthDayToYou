@@ -2,7 +2,7 @@
   position: absolute;
   max-width: 500px;
   max-height: 500px;
-  width: 300px;
+  width: 340px;
   height: 500px;
   cursor: pointer;
   will-change: transform, opacity;
@@ -15,11 +15,11 @@
 }
 
 .back {
-  background-image: url(../images/card1.jpg);
+  background-image: url(../images/cardAnFront.png);
 }
 
 .front {
-  background-image: url(../images/card2.jpg);
+  background-image: url(../images/cardAnBack.png);
 }
 
 .container {

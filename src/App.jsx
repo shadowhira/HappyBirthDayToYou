@@ -1,7 +1,7 @@
 import './App.css'
 import Balloon from './components/balloon'
 import Rocket from './components/rocket'
-import Curtain from './components/tamRem'
+import Curtain from './components/curtain'
 
 function App() {
 

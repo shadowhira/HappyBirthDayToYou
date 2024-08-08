@@ -1,28 +1,24 @@
-// CurtainTransition.jsx
 import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import Chest from './chest';
-import '../assets/css/tamRem.css';
+import '../assets/css/curtain.css';
 
 const CurtainTransition = ({ children }) => {
-  const [styles, api] = useSpring(() => ({
+  const [showChest, setShowChest] = useState(false);
+
+  const styles = useSpring({
     from: { translateY: '0%' },
     to: { translateY: '-100%' },
     config: { duration: 2000 },
-  }));
-
-  const [showChest, setShowChest] = useState(false);
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      api.start({ translateY: '-100%' });
-      setTimeout(() => {
-        setShowChest(true);
-      }, 2000); // Thời gian trùng với thời gian animation
-    }, 2000);
+      setShowChest(true);
+    }, 2000); // Thời gian khớp với thời gian animation
 
     return () => clearTimeout(timeout);
-  }, [api]);
+  }, []);
 
   return (
     <div className="curtain-container">

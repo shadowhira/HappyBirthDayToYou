@@ -12,32 +12,31 @@
   cursor: -webkit-grabbing;
 }
 
+.blink-and-zoom {
+  
+  animation: blink 1s infinite, zoom 1s infinite;
+  color: rgb(186, 43, 43);
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  /* position: relative; */
+  text-shadow: 0 0 10px rgba(37, 206, 43, 0.7), 0 0 20px rgba(37, 227, 75, 0.7), 0 0 30px rgba(40, 219, 34, 0.7), 0 0 40px rgba(29, 179, 99, 0.7);
+  white-space: nowrap;  
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(2);
-  }
-}
-
-.blink-and-zoom {
-  animation: blink 1s infinite, zoom 1s infinite;
-  color: rgb(186, 43, 43);
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
-  position: relative;
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 .reset-button {

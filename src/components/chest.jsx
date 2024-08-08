@@ -1,4 +1,3 @@
-// Chest.jsx
 import { animated, config, useSpring } from "@react-spring/web";
 import { useState } from "react";
 import "../assets/css/chest.css";
@@ -36,12 +35,11 @@ const Chest = () => {
 
   return (
     <>
-    <div>
-
-      <p className="instructions">
-        Chúc mừng sinh nhật tuổi 21
-      </p>
-    </div>
+      <div>
+        <p className="instructions">
+          Happy 21st birthday to you!
+        </p>
+      </div>
       <animated.div className="screen-slide" style={screenSlide}>
         <animated.div
           className="chest-container"

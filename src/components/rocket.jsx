@@ -119,7 +119,7 @@ const Rocket = () => {
       const timer = setTimeout(() => {
         setShowEffect(false);
         setShowCurtainTransition(true);
-      }, 4000); // Thời gian cho hiệu ứng
+      }, 5000); // Thời gian cho hiệu ứng
 
       return () => clearTimeout(timer);
     }
@@ -128,44 +128,47 @@ const Rocket = () => {
   return (
     <div>
       {!showCurtainTransition ? (
-        <>
-          <p className="instructions">
-            Pop all the balloons using Rocket and get the Gift!{" "}
-          </p>
-          <animated.div
-            ref={rocketRef}
-            className="rocket"
-            {...bind()}
-            style={{
-              transform: to(
-                [pos, angle],
-                ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`
-              ),
-            }}
+      <>
+        <p className="instructions">
+          Pop all balloons using Rocket and get the Gift!{" "}
+        </p>
+        <animated.div
+          ref={rocketRef}
+          className="rocket"
+          {...bind()}
+          style={{
+            transform: to(
+              [pos, angle],
+              ([x, y], a) => `translate3d(${x}px,${y}px,0) rotate(${a}rad)`
+            ),
+          }}
+        />
+        {balloons.map((balloon) => (
+          <Balloon
+            key={balloon.id}
+            x={balloon.x}
+            y={balloon.y}
+            id={`balloon-${balloon.id}`}
+            popped={balloon.popped}
           />
-          {balloons.map((balloon) => (
-            <Balloon
-              key={balloon.id}
-              x={balloon.x}
-              y={balloon.y}
-              id={`balloon-${balloon.id}`}
-              popped={balloon.popped}
-            />
-          ))}
+        ))}
+        {count === numBalloons && (
           <p className={showEffect ? "blink-and-zoom" : ""}>
-            {count}/{numBalloons}
+            Happy your {numBalloons} birthday! <br></br> 🎉🎉🎉
           </p>
-          {isOutOfBounds && (
-            <button
-              className="reset-button"
-              onClick={resetRocketPosition}
-              style={{ position: "absolute", top: "10px", right: "10px" }}
-            >
-              Reset Rocket Position
-            </button>
-          )}
-        </>
-      ) : (
+        )}
+        <p>{count !== numBalloons && `${count}/${numBalloons}`}</p>
+        {isOutOfBounds && (
+          <button
+            className="reset-button"
+            onClick={resetRocketPosition}
+            style={{ position: "absolute", top: "10px", right: "10px" }}
+          >
+            Call Rocket back
+          </button>
+        )}
+      </>
+      ) : ( 
         <CurtainTransition>
           <Chest />
         </CurtainTransition>
