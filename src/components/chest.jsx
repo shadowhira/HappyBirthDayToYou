@@ -75,7 +75,7 @@ const Chest = () => {
           />
         </>
       )}
-      <audio ref={audioRef} src={happyBirthdayGuitar} />
+      <audio ref={audioRef} src={happyBirthdayGuitar} autoPlay loop />
     </>
   );
 };
