@@ -43,7 +43,7 @@ const Chest = () => {
 
   return (
     <>
-      <div style={{ paddingTop: "100px" }}>
+      <div style={{ paddingTop: "50px" }}>
         <p className="instructions">
           Happy 21st birthday to you!
         </p>
