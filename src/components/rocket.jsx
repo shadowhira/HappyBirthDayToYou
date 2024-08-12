@@ -11,7 +11,7 @@ import Chest from "./chest.jsx";
 import balloonPopSound from "../assets/sounds/balloon-pop.mp3";
 
 const Rocket = () => {
-  const numBalloons = 21;
+  const numBalloons = 24;
   const initialRocketPos = [0, 0];
   const [{ pos }, api] = useSpring(() => ({ pos: initialRocketPos }));
   const [{ angle }, angleApi] = useSpring(() => ({

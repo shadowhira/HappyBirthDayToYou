@@ -45,7 +45,7 @@ const Chest = () => {
     <>
       <div style={{ paddingTop: "50px" }}>
         <p className="instructions">
-          Happy 21st birthday to you!
+          Happy 24st birthday to you!
         </p>
       </div>
       <animated.div className="screen-slide" style={screenSlide}>
