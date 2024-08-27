@@ -15,11 +15,11 @@
 }
 
 .back {
-  background-image: url(../images/cardAnhHieuFront.png);
+  background-image: url(../images/cardAnhNguyenFront.png);
 }
 
 .front {
-  background-image: url(../images/cardAnhHieuBack.png);
+  background-image: url(../images/cardAnhNguyenBack.png);
 }
 
 .container {
